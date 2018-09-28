@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block body %}
+    <div>
+        Login as: {% if username %} {{ username }} {% endif %}
+    </div>
+    <div><a href="{{ url_for('index') }}">Back to Startpage</a> </div>
+    <h1>Search for a book</h1>
+
+    <form action="{{ url_for('search') }}" method="post">
+
+        <div class="form-group">
+            <input autofocus class="form-control" name="searchtext" placeholder="Searchtext" value={{ search_text }}>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary">Start Search</button>
+        </div>
+
+    </form>
+    <ul>
+        {% for book in books %}
+            <li>
+                <a href="{{ url_for('book', book_id=book.book_id) }}">
+                    {{ book.isbn }}, {{ book.title }}, {{ book.author }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <form action="{{ url_for('logout') }}" method="post">
+
+        <div class="form-group">
+            <button class="btn btn-primary">Logout
+            </button>
+        </div>
+
+    </form>
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Startpage
+{% endblock %}
+
+{% block body %}
+    <div>
+        Login as: {% if username %} {{ username }} {% endif %}
+    </div>
+    <h1>Choose an action</h1>
+
+    <div>
+        <a href="{{ url_for('login') }}">Login</a>
+    </div>
+    <div>
+        <a href="{{ url_for('registration') }}">Registration</a>
+    </div>
+    <div>
+        <a href="{{ url_for('search') }}">Start Search</a>
+    </div>
+    <div>
+        {% if error_message %} {{ error_message }} {% endif %}
+    </div>
+    <form action="{{ url_for('logout') }}" method="post">
+
+        <div class="form-group">
+            <button class="btn btn-primary">Logout
+            </button>
+        </div>
+
+    </form>
+{% endblock %}
