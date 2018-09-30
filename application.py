@@ -6,7 +6,8 @@ from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-from models import *
+from models import User, Review
+from functions_database import *
 
 
 app = Flask(__name__)
